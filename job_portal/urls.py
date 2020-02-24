@@ -17,12 +17,17 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
 from django.conf.urls.static import static
+
 from  job_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", views.JobsTemplateView.as_view(), name="home"),
+    
+
     path("job_app/", include("job_app.urls")),
+    path("account/", include("account.urls")),
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

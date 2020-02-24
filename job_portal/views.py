@@ -1,5 +1,8 @@
 from django.shortcuts import render
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
+@login_required
 def home(request):
-    templates_name ="index.html"
-    content = {"name":"mahesh"}
-    return render(request,templates_name,content)
+    return render(request, 'index.html')
